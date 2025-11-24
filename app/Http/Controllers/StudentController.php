@@ -79,9 +79,9 @@ class StudentController extends Controller
     //   return "updated successfully";
     // }
     public function  delete(){
-      DB::table("students")->where("score" , "<" ,10)->delete();
+      DB::table("students")->where("score" , "<" ,30)->delete();
       return "deleted";
     }
     
-    
+
 }
