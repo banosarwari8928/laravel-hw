@@ -17,4 +17,7 @@ Route::get('id',[StudentController::class, 'id']);
 Route::get('order',[StudentController::class, 'order']);
 Route::get('update',[StudentController::class, 'update']);
 Route::get('delete',[StudentController::class, 'delete']);
+Route::get('addwithe',[StudentController::class, 'DataWithEloquent']);
+Route::get('read',[StudentController::class, 'read']);
+Route::get('add',[StudentController::class, 'DataWithEloquent']);
 
