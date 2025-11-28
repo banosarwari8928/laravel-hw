@@ -92,29 +92,67 @@ class StudentController extends Controller
 
 
     // adding data with Eloquent ORM
-    public function DataWithEloquent(){
-     $student = new Student(); 
-     $student->name="Ahmad";
-     $student->lastName="Nabizada";
-     $student->score=75;
-     $student->save();
-     return "added successfully";
-    }
-    public function read(){
-      // $read=Student::all();
-      // $read=Student::select('name','score')->where('id','=',3) ->get();
-      // $read=Student::select('name','score')->find(3);
-      $read=Student::orderBy("name","asc")->all();
-      return $read;
-    }
-    public function update(){
-     $update= Student::Find(5);
-     $update->name="Roqia";
-     $update->lastName="Akbari";
-     $update->update();
-     return "updated";
+    // public function DataWithEloquent(){
+    //  $student = new Student(); 
+    //  $student->name="Ahmad";
+    //  $student->lastName="Nabizada";
+    //  $student->score=75;
+    //  $student->save();
+    //  return "added successfully";
+    // }
+    // public function read(){
+    //   // $read=Student::all();
+    //   // $read=Student::select('name','score')->where('id','=',3) ->get();
+    //   // $read=Student::select('name','score')->find(3);
+    //   $read=Student::orderBy("name","asc")->all();
+    //   return $read;
+    // }
+    // public function update(){
+    //  $update= Student::Find(5);
+    //  $update->name="Roqia";
+    //  $update->lastName="Akbari";
+    //  $update->update();
+    //  return "updated";
 
 
-    }
+    // }
+    public function Data(){
+        // $allS=Student::where("score",">",50)->where(function($query){
+        //     $query->where("age","<",18)->orWhere("age",">",30);
+        // })->get();
+        // $allS=Student::where("score","<",30)->orWhere("age",">",50)->get();  
+        // __________________________________where and orWhere___________________
+        // $allS=Student::whereAny(["score","age"],">=",50)->get();
+        // _________________________whereAny_______________________
+        // $allS=Student::whereAll(["score","age"],">=",50)->get();
+        // ___________________________whereAll____________________________
+        // $allS=Student::where("name","LIKE","%m%")->get();
+        // _____________________selecting names according to there letters just(small letter)_______________
+        // $allS=Student::where("name","LIKE","%m%")->orWhere("name","LIKE","%M%")->get();
+        // _________________selecting names according to there Capital lettern both capital and small(M,m)
+        // $allS=Student::where("name","LIKE","%ma%")->orWhere("name","LIKE","%Ma%")->get();
+        // _________________________selecting Name based on this condition (M) and (a) next to each other ___________________________
 
+
+
+
+
+        // Query scope
+        $allS= Student::female()->get();
+        return $allS;
+
+    }
+    public function FQ(){
+        //    $allS= Student::where("gender","m")->where("age",">=",20)->get();
+        // return $allS;
+          $allS= Student::female()->get();
+        return $allS;
+    }
+     public function SQ(){
+        //    $allS= Student::where("gender","m")->where("age",">=",20)->get();
+           $allS= Student::female()->get();
+
+        
+        return $allS;
+    }
 }

@@ -9,4 +9,7 @@ class Student extends Model
 {
     //
     use HasFactory;
+    public function scopeFemale($query){
+        $query->where("age",">",30)->where("gender","=","f")->get();
+    }
 }
