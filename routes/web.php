@@ -16,7 +16,9 @@ Route::get('/', function () {
 // Route::get('id',[StudentController::class, 'id']);
 // Route::get('order',[StudentController::class, 'order']);
 // Route::get('update',[StudentController::class, 'update']);
-// Route::get('delete',[StudentController::class, 'delete']);
+Route::get('delete',[StudentController::class, 'Delete']);
+Route::get('deleted',[StudentController::class, 'deleted']);
+Route::get('restore',[StudentController::class, 'restore']);
 // Route::get('addwithe',[StudentController::class, 'DataWithEloquent']);
 // Route::get('read',[StudentController::class, 'read']);
 Route::get('Data',[StudentController::class ,'Data']);

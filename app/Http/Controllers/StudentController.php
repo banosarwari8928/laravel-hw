@@ -130,7 +130,7 @@ class StudentController extends Controller
         // _____________________selecting names according to there letters just(small letter)_______________
         // $allS=Student::where("name","LIKE","%m%")->orWhere("name","LIKE","%M%")->get();
         // _________________selecting names according to there Capital lettern both capital and small(M,m)
-        // $allS=Student::where("name","LIKE","%ma%")->orWhere("name","LIKE","%Ma%")->get();
+        $allS=Student::where("name","LIKE","%m%")->orWhere("name","LIKE","%M%")->get();
         // _________________________selecting Name based on this condition (M) and (a) next to each other ___________________________
 
 
@@ -138,21 +138,38 @@ class StudentController extends Controller
 
 
         // Query scope
-        $allS= Student::female()->get();
+    //     $allS= Student::female()->get();
         return $allS;
 
-    }
-    public function FQ(){
-        //    $allS= Student::where("gender","m")->where("age",">=",20)->get();
-        // return $allS;
-          $allS= Student::female()->get();
-        return $allS;
-    }
-     public function SQ(){
-        //    $allS= Student::where("gender","m")->where("age",">=",20)->get();
-           $allS= Student::female()->get();
+    // }
+    // public function FQ(){
+    //     //    $allS= Student::where("gender","m")->where("age",">=",20)->get();
+    //     // return $allS;
+    //       $allS= Student::female()->get();
+    //     return $allS;
+    // }
+    //  public function SQ(){
+    //     //    $allS= Student::where("gender","m")->where("age",">=",20)->get();
+    //        $allS= Student::female()->get();
 
         
-        return $allS;
+    //     return $allS;
     }
+
+
+
+    public function Delete(){
+        Student::findOrFail(1)->delete();
+        return"id 2 deleted";
+    }
+    public function deleted(){
+    //  $del=  Student::onlyTrashed()->get();
+     $del=  Student::withTrashed()->get();
+     return $del; 
+    }
+    public function restore(){
+        $restore=Student::withTrashed()->FindOrFail(1)->restore();
+        return $restore;
+    }
+
 }
