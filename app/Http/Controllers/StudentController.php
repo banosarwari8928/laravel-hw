@@ -159,8 +159,8 @@ class StudentController extends Controller
 
 
     public function Delete(){
-        Student::findOrFail(1)->delete();
-        return"id 2 deleted";
+        Student::findOrFail(4)->delete();
+        return"student with id 4 deleted";
     }
     public function deleted(){
     //  $del=  Student::onlyTrashed()->get();
@@ -168,8 +168,21 @@ class StudentController extends Controller
      return $del; 
     }
     public function restore(){
-        $restore=Student::withTrashed()->FindOrFail(1)->restore();
+        $restore=Student::withTrashed()->FindOrFail(2)->restore();
         return $restore;
+    }
+    // ______________________________________________________________________________________________________________/
+    public function viewreturn(Request $request){
+       $St= Student::when($request->search,function($q)use($request){
+        $q->whereAny( [
+            "name",
+            "LastName",
+            "age",
+            "score",
+            "gender"
+        ],'LIKE','%'.$request->search.'%');
+       })->get();
+      return  view('Student.home',compact('St'));
     }
 
 }
