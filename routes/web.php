@@ -21,12 +21,14 @@ Route::get('deleted',[StudentController::class, 'deleted']);
 Route::get('restore',[StudentController::class, 'restore']);
 // Route::get('addwithe',[StudentController::class, 'DataWithEloquent']);
 // Route::get('read',[StudentController::class, 'read']);
-Route::get('students',[StudentController::class, 'viewreturn']);
+// Route::get('students',[StudentController::class, 'viewreturn']);
 Route::get('Data',[StudentController::class ,'Data']);
 Route::get('FQ',[StudentController::class ,'FQ']);
 Route::get('SQ',[StudentController::class ,'SQ']);
 
-Route::prefix('Student')->controller(StudentController::class)->group(function(){
-    // Route::get('students','viewreturn');
+Route::prefix('student')->controller(StudentController::class)->group(function(){
+    Route::get('/','viewreturn');
+    Route::view('adds','Student.add');
+    Route::post('create','create');
 });
-
+Route::post('createst',[StudentController::class,'create']);

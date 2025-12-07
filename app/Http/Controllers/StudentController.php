@@ -184,5 +184,15 @@ class StudentController extends Controller
        })->paginate(15);
       return  view('Student.home',compact('St'));
     }
+    public function create(Request $request){
+        $student=new Student();
+        $student->name=$request->name;
+        $student->LastName=$request->lastname;
+        $student->score=$request->score;
+        $student->age=$request->age;
+        $student->gender=$request->gender;
+        $student->save();
+        return redirect("student");
+    }
 
 }
