@@ -17,6 +17,10 @@
             margin:7px auto;
             background-color:skyblue;
         }
+        .paginate{
+            display:flex;
+            gap:5px;
+        }
     </style>
 </head>
 <body>
@@ -45,6 +49,9 @@
             </tr>
             @endforeach
         </table>
+        <div class="paginate">
+            {{$St->appends(request()->query())->links()}}
+        </div>
     </div>
 </body>
 </html>

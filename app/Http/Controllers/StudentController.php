@@ -181,7 +181,7 @@ class StudentController extends Controller
             "score",
             "gender"
         ],'LIKE','%'.$request->search.'%');
-       })->get();
+       })->paginate(15);
       return  view('Student.home',compact('St'));
     }
 
