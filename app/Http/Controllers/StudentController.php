@@ -107,15 +107,7 @@ class StudentController extends Controller
     //   $read=Student::orderBy("name","asc")->all();
     //   return $read;
     // }
-    // public function update(){
-    //  $update= Student::Find(5);
-    //  $update->name="Roqia";
-    //  $update->lastName="Akbari";
-    //  $update->update();
-    //  return "updated";
-
-
-    // }
+    //
     public function Data(){
         // $allS=Student::where("score",">",50)->where(function($query){
         //     $query->where("age","<",18)->orWhere("age",">",30);
@@ -194,5 +186,11 @@ class StudentController extends Controller
         $student->save();
         return redirect("student");
     }
+    public function update($id){
+         $student= Student::FindOrFail($id);
+         return view('Student.update', compact('student'));
+    
+    
+        }
 
 }

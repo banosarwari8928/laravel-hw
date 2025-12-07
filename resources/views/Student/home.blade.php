@@ -45,7 +45,9 @@
                 <td>{{$student->LastName}}</td>
                 <td>{{$student->score}}</td>
                 <td>{{$student->gender}}</td>
-                <td>{{$student->age}}</td>
+                <td>{{$student->age}}</td>                
+                <td><a href="{{URL('student/update/').'/'.$student->id}}">Update  </a></td>                
+
             </tr>
             @endforeach
         </table>
