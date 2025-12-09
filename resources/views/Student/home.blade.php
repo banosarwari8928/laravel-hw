@@ -61,6 +61,8 @@
                 <th>Score</th>
                 <th>Gender</th>
                 <th>Age</th>
+                <th>Update</th>
+                <th>Delete</th>
             </tr>
             @foreach ($St as $student )
             <tr>
@@ -71,7 +73,11 @@
                 <td>{{$student->gender}}</td>
                 <td>{{$student->age}}</td>                
                 <td><a href="{{ URL('student/updated').'/'.$student->id}}">Update  </a></td>                
-
+                <td> <form action="{{URL('student/delete'.'/'.$student->id)}}" method="post" onsubmit="return confirm("Are you sure deleting this data")">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Delete</button>
+                </form> </td>
             </tr>
             @endforeach
         </table>

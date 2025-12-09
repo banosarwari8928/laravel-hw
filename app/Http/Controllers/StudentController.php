@@ -202,4 +202,8 @@ class StudentController extends Controller
             $student->update();
             return redirect ("student");
                 }
+                public function destroy(Request $request, $id){
+                    Student::findOrFail($id)->delete();
+                    return redirect("student");
+                }
 }
