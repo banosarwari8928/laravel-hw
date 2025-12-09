@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Student;
+use App\Http\Requests\FormAddRequest;
 
 class StudentController extends Controller
 {
@@ -176,7 +177,7 @@ class StudentController extends Controller
        })->paginate(15);
       return  view('Student.home',compact('St'));
     }
-    public function create(Request $request){
+    public function create(FormAddRequest $request){
         $student=new Student();
         $student->name=$request->name;
         $student->LastName=$request->lastname;

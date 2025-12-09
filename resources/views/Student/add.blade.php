@@ -8,6 +8,18 @@
 </head>
 <body>
     <div class="w-full mx-auto my-12 p-14">
+        <div>
+            <ul>
+                @if( $errors->any() )
+                <ol>
+              @foreach($errors->all() as $error)  
+              <li>{{$error}}</li>   
+              @endforeach 
+                </ol>
+                 
+                @endif
+            </ul>
+        </div>
         <div class="border bg-sky-200 w-full">
             <h1>ADD NEW STUDENT</h1>
             <form action="{{URL('student/create')}}" method="post">
