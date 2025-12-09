@@ -24,13 +24,13 @@
             <h1>ADD NEW STUDENT</h1>
             <form action="{{URL('student/create')}}" method="post">
             @csrf
-                <input type="text" name="name" placeholder="Enter Your Name " class="py-4 w-full border rounded-md focus:outline-0 focus:border-green-400">
-                <input type="text" name="lastname" placeholder="Enter Your Lastname " class="py-4 w-full border rounded-md focus:outline-0 focus:border-green-400">
-                <input type="number" name="score" placeholder="Enter Your Score " class="py-4 w-full border rounded-md focus:outline-0 focus:border-green-400">
-                <input type="number" name="age"placeholder="How old are you? " class="py-4 w-full border rounded-md focus:outline-0 focus:border-green-400">
+                <input type="text" name="name" value="{{ old('name')}}" placeholder="Enter Your Name " class="py-4 w-full border rounded-md focus:outline-0 focus:border-green-400">
+                <input type="text" name="lastname" value="{{old ('lastname')}}" placeholder="Enter Your Lastname " class="py-4 w-full border rounded-md focus:outline-0 focus:border-green-400">
+                <input type="number" name="score"  value="{{old ('score')}}" placeholder="Enter Your Score " class="py-4 w-full border rounded-md focus:outline-0 focus:border-green-400">
+                <input type="number" name="age"    value="{{old ('age')}}" placeholder="How old are you? " class="py-4 w-full border rounded-md focus:outline-0 focus:border-green-400">
                <label for="">Gender:</label>
-               Male <input type="radio"name="gender" value="m" />
-               Female <input type="radio"name="gender" value="f" />
+               Male <input type="radio"name="gender" value="m" {{old('gender')==="m"?"checked":"" }} />
+               Female <input type="radio"name="gender" value="f" {{old('gender')==="f"?"checked":"" }} />
                <button type="submit" class="py-4 bg-green-300">Add</button>
             </form>
         </div>
