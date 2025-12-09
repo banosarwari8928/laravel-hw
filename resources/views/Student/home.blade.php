@@ -5,29 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        div.search{
-            margin:12px auto ;
-            border:2px black;
+        .search{
+            margin:20px auto;
+            align-items:center;
+            justify-content:center;
+            border:2px red solid;
+            padding:10px 40px;
         }
         input{
             padding:5px 3px ;
         }
+        .btn{
+            padding:8px 18px;
+            background:red;
+            color:white; 
+            border:0 ;
+            border-radiuce:5px;
+        }
     th{
             padding:12px ;
-            margin:7px auto;
+            border:1px black dotted;
+            margin:5px auto;
             background-color:skyblue;
         }
         .paginate{
             display:flex;
             gap:5px;
+            padding:8px;
+            background:skyblue;
+        }
+        td{
+            border:2px black solid;
+            border: ; 
+            text-align:center;
+            padding:20px;
+        }
+        td>a{
+            text-decoration:none;
+            color:green;
+            padding: 18px;
         }
     </style>
 </head>
 <body>
-    <div class="serach">
+    <div >
         <form action={{ URl('students') }} method="GET"  >
-            <input type="text" name="search" id="search">
-            <button type="submit">Search</button>
+            <input type="text" class="search" name="search" id="search">
+            <button type="submit" class="btn">Search</button>
         </form>
         <table>
             <tr>
@@ -46,7 +70,7 @@
                 <td>{{$student->score}}</td>
                 <td>{{$student->gender}}</td>
                 <td>{{$student->age}}</td>                
-                <td><a href="{{URL('student/update/').'/'.$student->id}}">Update  </a></td>                
+                <td><a href="{{ URL('student/updated').'/'.$student->id}}">Update  </a></td>                
 
             </tr>
             @endforeach

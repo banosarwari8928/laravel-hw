@@ -192,5 +192,14 @@ class StudentController extends Controller
     
     
         }
-
+        public function edit(Request $request,$id){
+            $student=Student::findOrFail($id);
+            $student->name=$request->name;
+            $student->LastName=$request->lastname;
+            $student->score=$request->score;
+            $student->age=$request->age;
+            $student->gender=$request->gender;
+            $student->update();
+            return redirect ("student");
+                }
 }
