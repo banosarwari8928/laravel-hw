@@ -32,5 +32,5 @@ Route::prefix('student')->controller(StudentController::class)->group(function()
     Route::post('create','create');
     Route::get("updated/{id}",'update');
     Route::put('edit/{id}','edit'); 
-    Route::delete('delete/{id}','destroy');
+    Route::delete('delete/{id}','destroy'); 
 });

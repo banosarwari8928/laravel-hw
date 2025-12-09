@@ -25,8 +25,9 @@ class FormAddRequest extends FormRequest
             "name"=>"required|min:2|max:20",
             "lastname"=>"required|min:5|max:20",
             "score"=>"required|numeric|min:5|max:100",
-            "age"=>"required|min:15|max:50",
+            "age"=>"required|numeric|min:12|max:50",
             "gender"=>"required|in:m,f",
+            "image"=>"nullable|image|mimes:jpg,png,jpeg,gif|max:4096"
         ];
     }
     public function messages(){
