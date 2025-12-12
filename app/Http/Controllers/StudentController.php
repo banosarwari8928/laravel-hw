@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Student;
 use App\Http\Requests\FormAddRequest;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -68,8 +69,27 @@ class StudentController extends Controller
             $student->update();
             return redirect ("student");
                 }
-                public function destroy(Request $request, $id){
-                    Student::findOrFail($id)->delete();
-                    return redirect("student");
-                }
+                // public function destroy(Request $request, $id){
+                //   $student = Student::findOrFail($id)->delete();
+                //   if($student->image){
+                //     Storage::disk('public')->delete($student->image);
+                //   }
+                //   $student->delete();
+                //     return redirect("student");
+                // }
+                public function destroy(Request $request, $id)
+{
+    $student = Student::findOrFail($id);
+
+    // Delete image if it exists
+    if ($student->image) {
+        Storage::disk('public')->delete($student->image);
+    }
+
+    // Delete student record
+    $student->delete();
+
+    return redirect("student");
+}
+
 }
